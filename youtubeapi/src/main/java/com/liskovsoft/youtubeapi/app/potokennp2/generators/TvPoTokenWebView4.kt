@@ -308,7 +308,6 @@ internal class TvPoTokenWebView4 private constructor(
 
     //region Obtaining poTokens
     override fun generatePoToken(identifier: String): String {
-        Log.d(TAG, "generatePoToken() called with identifier $identifier")
         val latch = CountDownLatch(1)
         lateinit var pot: String
 
@@ -362,10 +361,8 @@ internal class TvPoTokenWebView4 private constructor(
      */
     @JavascriptInterface
     fun onObtainPoTokenResult(identifier: String, poTokenU8: String) {
-        Log.d(TAG, "Generated poToken (before decoding): identifier=$identifier poTokenU8=$poTokenU8")
         val poToken = u8ToBase64(poTokenU8)
 
-        Log.d(TAG, "Generated poToken: identifier=$identifier poToken=$poToken")
         popPoTokenEmitter(identifier)?.invoke(poToken)
     }
 
@@ -437,17 +434,17 @@ internal class TvPoTokenWebView4 private constructor(
             null
         )
 
-        val httpCode = response.code()
+        val httpCode = response.code
 
         if (httpCode != 200) {
             onInitializationErrorCloseAndCancel(PoTokenException("Invalid response code: $httpCode"))
         }
 
-        if (response.body() == null) {
+        if (response.body == null) {
             onInitializationErrorCloseAndCancel(PoTokenException("Response body is empty. Response code: $httpCode"))
         }
 
-        return response.body()?.string()
+        return response.body?.string()
     }
 
     /**

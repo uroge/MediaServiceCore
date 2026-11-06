@@ -16,7 +16,7 @@ internal object URLS {
         const val STAGING = "https://green-youtubei.sandbox.googleapis.com/youtubei/"
         const val RELEASE = "https://release-youtubei.sandbox.googleapis.com/youtubei/"
         const val TEST = "https://test-youtubei.sandbox.googleapis.com/youtubei/"
-        const val CAMI = "http://cami-youtubei.sandbox.googleapis.com/youtubei/"
+        const val CAMI = "https://cami-youtubei.sandbox.googleapis.com/youtubei/"
         const val UYTFE = "https://uytfe.sandbox.google.com/youtubei/"
     }
 }
